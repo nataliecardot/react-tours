@@ -1,5 +1,5 @@
 /*
-=============== 
+===============
 Variables
 ===============
 */
@@ -45,7 +45,7 @@ Variables
   --fixed-width: 620px;
 }
 /*
-=============== 
+===============
 Global Styles
 ===============
 */
@@ -147,7 +147,7 @@ p {
   font-size: 1.2rem;
 }
 /*
-=============== 
+===============
 Tours
 ===============
 */
@@ -187,6 +187,9 @@ main {
   object-fit: cover;
   border-top-right-radius: var(--radius);
   border-top-left-radius: var(--radius);
+  /* A very small gap appears below images because they're inline (supposedly extenders for 'y' and 'p') - can be fixed by setting to display: block or using vertical-align: middle */
+  /* display: block; */
+  vertical-align: middle;
 }
 .tour-info {
   display: flex;
@@ -196,6 +199,7 @@ main {
 }
 .tour-info h4 {
   margin-bottom: 0;
+  text-transform: uppercase;
 }
 .single-tour button {
   background: transparent;
