@@ -9,6 +9,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
+  };
+
   // Invoke fetchTours once app component has rendered
   // Passing [] (empty dependency array) as second arg ensures it's only called once, after initial render - by default useEffect is called after first render and after every rerender
   useEffect(() => {
@@ -18,7 +23,8 @@ function App() {
       // Catch network errors
       try {
         const response = await fetch(url);
-        const tours = await response.json(); // Parse HTTP response as JSON object
+        // Despite the method being named json(), the result is not JSON but is instead the result of taking JSON as input and parsing it to produce a JavaScript object https://developer.mozilla.org/en-US/docs/Web/API/Body/json
+        const tours = await response.json();
         setLoading(false);
         setTours(tours);
       } catch (error) {
@@ -39,7 +45,8 @@ function App() {
   }
   return (
     <main>
-      <Tours tours={tours} />
+      {/* removeTour: example of prop drilling - down 2 levels (note, Context API is a way around it) */}
+      <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
 }
