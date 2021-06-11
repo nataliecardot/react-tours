@@ -154,7 +154,7 @@ Tours
 main {
   width: 90vw;
   max-width: var(--fixed-width);
-  margin: 5rem auto;
+  margin: 4rem auto;
 }
 .loading {
   text-align: center;
